@@ -1,0 +1,20 @@
+// auto big case all key word
+
+// proto3 相对proto2，支持更多的语言（Ruby、C#等）、删除了一些复杂的语法和特性、引入了更多的约定等
+syntax = "proto3";	// version
+
+// protoc-gen-go need this 
+option go_package = "./hello";	// path of file and name of pacakge
+
+// belong to grpc (protobuf can't analyse
+service Hello{	// service
+	rpc Hello(HelloReq) returns (HelloRsp);	// interface
+}
+
+message HelloReq {	// struct
+	string name = 1; // 1 is index
+}
+
+message HelloRsp {
+	string info = 1;
+}
