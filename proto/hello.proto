@@ -12,7 +12,7 @@ service Hello{	// service
 }
 
 message HelloReq {	// struct
-	string name = 1; // 1 is index
+	string name = 1; // 1 is index of transmission data
 }
 
 message HelloRsp {
