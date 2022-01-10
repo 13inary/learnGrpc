@@ -7,6 +7,7 @@ go get github.com/golang/protobuf/protoc-gen-go
 
 ## 2 edit
 ```shell
+# if not send field receiver will receive defualt value
 vim <file name>.protoc
 ```
 
