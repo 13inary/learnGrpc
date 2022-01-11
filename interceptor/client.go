@@ -24,6 +24,7 @@ func client() {
 	// var opts []grpc.DialOption
 	// opts = append(opts, grpc.WithInsecure())
 	// opts = append(opts, WithUnaryInterceptor(myInterceptor))
+	// con, err := grpc.Dial("127.0.0.1:8080", opts...)
 	con, err := grpc.Dial("127.0.0.1:8080", grpc.WithInsecure(), opt)
 	if err != nil {
 		log.Printf("err = %+v\n", err)
