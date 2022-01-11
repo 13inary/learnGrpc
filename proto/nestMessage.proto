@@ -1,0 +1,25 @@
+syntax = "proto3";
+//import "";
+ 
+option go_package ="./nest";
+
+message Result {
+	string name = 1;
+	string url = 2;
+}
+
+message low {
+	string info = 1;
+	repeated Result data = 2;	// nest
+}
+
+//message low {
+//	string info = 1;
+//
+//	message Result {
+//		string name = 1;
+//		string url = 2;
+//	}
+//
+//	repeated Result data = 2;	// nest
+//}

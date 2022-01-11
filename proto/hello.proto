@@ -1,4 +1,5 @@
 // auto big case all key word
+// this file like document for develop
 
 // proto3 相对proto2，支持更多的语言（Ruby、C#等）、删除了一些复杂的语法和特性、引入了更多的约定等
 syntax = "proto3";	// version

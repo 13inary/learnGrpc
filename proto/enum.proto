@@ -1,0 +1,14 @@
+syntax = "proto3";
+//import "";
+ 
+option go_package ="./enum";
+ 
+enum Gender {
+	MALE = 0;
+	FEMALE = 1;
+}
+ 
+message man {
+	string name = 1;
+	Gender g = 2;
+}
