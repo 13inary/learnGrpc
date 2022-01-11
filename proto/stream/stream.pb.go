@@ -24,16 +24,17 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Req struct {
+type Result struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Url  string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
 }
 
-func (x *Req) Reset() {
-	*x = Req{}
+func (x *Result) Reset() {
+	*x = Result{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_stream_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -41,13 +42,13 @@ func (x *Req) Reset() {
 	}
 }
 
-func (x *Req) String() string {
+func (x *Result) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Req) ProtoMessage() {}
+func (*Result) ProtoMessage() {}
 
-func (x *Req) ProtoReflect() protoreflect.Message {
+func (x *Result) ProtoReflect() protoreflect.Message {
 	mi := &file_stream_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -59,28 +60,36 @@ func (x *Req) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Req.ProtoReflect.Descriptor instead.
-func (*Req) Descriptor() ([]byte, []int) {
+// Deprecated: Use Result.ProtoReflect.Descriptor instead.
+func (*Result) Descriptor() ([]byte, []int) {
 	return file_stream_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Req) GetName() string {
+func (x *Result) GetName() string {
 	if x != nil {
 		return x.Name
 	}
 	return ""
 }
 
-type Rsp struct {
+func (x *Result) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
+type Low struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Info string `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
+	Info string    `protobuf:"bytes,1,opt,name=info,proto3" json:"info,omitempty"`
+	Data []*Result `protobuf:"bytes,2,rep,name=data,proto3" json:"data,omitempty"` // nest
 }
 
-func (x *Rsp) Reset() {
-	*x = Rsp{}
+func (x *Low) Reset() {
+	*x = Low{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_stream_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -88,13 +97,13 @@ func (x *Rsp) Reset() {
 	}
 }
 
-func (x *Rsp) String() string {
+func (x *Low) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Rsp) ProtoMessage() {}
+func (*Low) ProtoMessage() {}
 
-func (x *Rsp) ProtoReflect() protoreflect.Message {
+func (x *Low) ProtoReflect() protoreflect.Message {
 	mi := &file_stream_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -106,26 +115,37 @@ func (x *Rsp) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Rsp.ProtoReflect.Descriptor instead.
-func (*Rsp) Descriptor() ([]byte, []int) {
+// Deprecated: Use Low.ProtoReflect.Descriptor instead.
+func (*Low) Descriptor() ([]byte, []int) {
 	return file_stream_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *Rsp) GetInfo() string {
+func (x *Low) GetInfo() string {
 	if x != nil {
 		return x.Info
 	}
 	return ""
 }
 
+func (x *Low) GetData() []*Result {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
 var File_stream_proto protoreflect.FileDescriptor
 
 var file_stream_proto_rawDesc = []byte{
-	0x0a, 0x0c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x19,
-	0x0a, 0x03, 0x52, 0x65, 0x71, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x19, 0x0a, 0x03, 0x52, 0x73, 0x70,
-	0x12, 0x12, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x69, 0x6e, 0x66, 0x6f, 0x32, 0x4a, 0x0a, 0x06, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x13,
+	0x0a, 0x0c, 0x73, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x0c,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2e, 0x0a, 0x06,
+	0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x72,
+	0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x75, 0x72, 0x6c, 0x22, 0x36, 0x0a, 0x03,
+	0x6c, 0x6f, 0x77, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x69, 0x6e, 0x66, 0x6f, 0x12, 0x1b, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18,
+	0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x07, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x52, 0x04,
+	0x64, 0x61, 0x74, 0x61, 0x32, 0x4a, 0x0a, 0x06, 0x53, 0x74, 0x72, 0x65, 0x61, 0x6d, 0x12, 0x13,
 	0x0a, 0x03, 0x47, 0x65, 0x74, 0x12, 0x04, 0x2e, 0x52, 0x65, 0x71, 0x1a, 0x04, 0x2e, 0x52, 0x73,
 	0x70, 0x30, 0x01, 0x12, 0x13, 0x0a, 0x03, 0x50, 0x75, 0x74, 0x12, 0x04, 0x2e, 0x52, 0x65, 0x71,
 	0x1a, 0x04, 0x2e, 0x52, 0x73, 0x70, 0x28, 0x01, 0x12, 0x16, 0x0a, 0x04, 0x43, 0x68, 0x61, 0x74,
@@ -148,21 +168,24 @@ func file_stream_proto_rawDescGZIP() []byte {
 
 var file_stream_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_stream_proto_goTypes = []interface{}{
-	(*Req)(nil), // 0: Req
-	(*Rsp)(nil), // 1: Rsp
+	(*Result)(nil), // 0: Result
+	(*Low)(nil),    // 1: low
+	(*Req)(nil),    // 2: Req
+	(*Rsp)(nil),    // 3: Rsp
 }
 var file_stream_proto_depIdxs = []int32{
-	0, // 0: Stream.Get:input_type -> Req
-	0, // 1: Stream.Put:input_type -> Req
-	0, // 2: Stream.Chat:input_type -> Req
-	1, // 3: Stream.Get:output_type -> Rsp
-	1, // 4: Stream.Put:output_type -> Rsp
-	1, // 5: Stream.Chat:output_type -> Rsp
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: low.data:type_name -> Result
+	2, // 1: Stream.Get:input_type -> Req
+	2, // 2: Stream.Put:input_type -> Req
+	2, // 3: Stream.Chat:input_type -> Req
+	3, // 4: Stream.Get:output_type -> Rsp
+	3, // 5: Stream.Put:output_type -> Rsp
+	3, // 6: Stream.Chat:output_type -> Rsp
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_stream_proto_init() }
@@ -170,9 +193,10 @@ func file_stream_proto_init() {
 	if File_stream_proto != nil {
 		return
 	}
+	file_common_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_stream_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Req); i {
+			switch v := v.(*Result); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -184,7 +208,7 @@ func file_stream_proto_init() {
 			}
 		}
 		file_stream_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Rsp); i {
+			switch v := v.(*Low); i {
 			case 0:
 				return &v.state
 			case 1:

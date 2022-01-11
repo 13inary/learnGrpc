@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+//package common;
+
+option go_package ="./stream";
+
+message Req {
+	string name = 1;
+}
+
+message Rsp {
+	string info = 1;
+} 
+
