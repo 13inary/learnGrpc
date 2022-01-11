@@ -1,0 +1,21 @@
+package overTime
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"time"
+)
+
+// package overTime
+
+// client
+func client() {
+	ctx, err := context.WithTimeout(context.Background(), time.Second*3)
+	if err != nil {
+		log.Printf("err = %+v\n", err)
+	}
+	fmt.Printf("ctx = %+v\n", ctx)
+
+	// call function
+}

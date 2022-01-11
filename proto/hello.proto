@@ -7,6 +7,7 @@ syntax = "proto3";	// version
 // protoc-gen-go need this 
 option go_package = "./hello";	// path of file and name of pacakge
 
+// interface
 // belong to grpc (protobuf can't analyse
 service Hello{	// service
 	rpc Hello(HelloReq) returns (HelloRsp);	// interface
