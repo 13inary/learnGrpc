@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+//import "";
+ 
+option go_package ="../pb";
+ 
+service Hello {
+	rpc GetStream(Req) returns (stream Rsp); // 注意返回值 中有stream
+}
+
+message Req {
+	string name = 1;
+}
+
+message Rsp {
+	string info = 1;
+}
+
+// protoc -I . steam.proto  --go_out=plugins=grpc:.

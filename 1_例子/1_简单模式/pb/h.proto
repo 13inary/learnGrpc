@@ -1,0 +1,19 @@
+syntax = "proto3";
+ 
+//import "";
+ 
+option go_package ="../pb";
+ 
+service Hello {
+	rpc Say(Req) returns (Rsp);
+}
+
+message Req {
+	string name = 1;
+}
+
+message Rsp {
+	string info = 1;
+}
+
+// protoc -I . *.proto --go_out=plugins=grpc:.

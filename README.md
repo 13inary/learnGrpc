@@ -1,28 +1,6 @@
-## 2 install
-```shell
-# download https://github.com/protocolbuffers/protobuf
-
-go get github.com/golang/protobuf/protoc-gen-go
-```
-
-## 2 edit
-```shell
-# if not send field receiver will receive defualt value
-vim <file name>.protoc
-```
-
-## 2 generate
-```shell
-# protoc generate file by *.proto
-# -I path and file
-# --go_out generate file by Golang
-# plugins=grpc use plugin grpc
-# :. output path
-protoc -I . <file name> --go_out=plugins=grpc:.
-```
-
-## 2 use
-```shell
-import "github.com/golang/protobuf/proto"
-```
+##  README
+一个底层实现了RPC的RPC框架，自动生成 客户端代理和服务端代理。
+支持多语言。
+使用的网络传输协议：`HTTP/2`
+使用的序列化协议：`protobuf`
 
